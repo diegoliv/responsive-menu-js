@@ -1,33 +1,32 @@
-// responsiveMenu.js =========================//
-// Responsive jQuery menu plugin              //
-// developed by diegoliv @Favolla Comunicação //
-// site: http://favolla.com.br                //
+// RESPONSIVE MENU ===========================//
+// wrapper para plugin de menu responsivo,    //
+//desenvolvido por Favolla Comunicacao        //
 //============================================//
 
-/* INSTRUCTIONS
- Apply the plugin directly on the main wrapper of the menu. Example:
+/* INSTRUCOES
+ Aplique o plugin diretamente no principal wrapper do menu responsivo. por exemplo:
 
  $(#menu).responsiveMenu($(#trigger));
 
- The plugin just work if classes toggles, leaving the interactivity and animations for css. 
+ O plugin simplesmente trabalha com os toggles de classes, deixando a interatividade para as configuracoes em css
 
- CONFIG
- - trigger: selector for the button or element that will activate the toggle of the responsive menu (required)
- - activeClass: class name that will be injected on the elements of the main menu when the toggle is activated (defalut: "active")
- - submenuTrigger: selector of the button(s) that activates the second level (if they exist) of the menu (default: $('sub-toggle'))
- - submenu: selector of the wrappers from the second level of the menu (default: $('.submenu'))
- - submenuActiveClass: class name that will be injected on wrappers of the second level of menus when they are activated (default: "open")
- - breakpoint: maximum width of the screen where the plugin will work. When the screen reach this size, it removes all the injected classes too. (default: 720)
- - timeOut: time interval in miliseconds, when the onResize function will be executed. The biggest the number, the bigger is the resourse economy, but the slower is the plugin response. (default: 100)
- - moveCanvas: option to activate a class toggle on the wrapper of the entire page. Useful for using the "off canvas" menu pattern (default: false)
- - canvas: selector of the wrapper or the elements that build the main site structure (default: null)
+ CONFIGURACOES
+ - trigger: seletor do botao ou elemento que ira ativar o toggle do menu responsivo (REQUERIDO)
+ - activeClass: nome da classe a ser inserida nos elementos do menu principal quando o toggle for ativado (default: active)
+ - submenuTrigger: seletor do botao que ativa os submenus, caso haja (default: $('sub-toggle'))
+ - submenu: seletor dos elementos dos submenus (default: $('.submenu'))
+ - submenuActiveClass: nome da classe a ser inserida nos submenus quando forem ativados (default: open)
+ - breakpoint: tamanho maximo de tela onde o menu responsivo vai funcionar (default: 720)
+ - timeOut: tempo em milissegundos onde sera executado o onResize. Quanto maior o numero, maior a economia de recurso, mas mais lenta e a resposta do plugin (default: 100)
+ - moveCanvas: opcao para ativar um toggle na tela inteira do site, movendo todo o conteudo juntamente com o meu, seguindo o padrao "off canvas" (default: false)
+ - canvas: nome da classe dos elementos que compoem o "canvas" (default: null)
 */
-
 ;(function ( $, window, document, undefined ) {
 
   $.fn.responsiveMenu = function(settings){
+
      var config = {
-          'trigger': null,
+          'trigger': '',
           'activeClass': 'active',
           'submenuTrigger': $('.sub-toggle'),
           'submenu': false,
@@ -35,25 +34,28 @@
           'breakpoint': 720,
           'timeOut': 100,
           'moveCanvas': false,
-          'canvas': null,
+          'canvas': '',
       };
+
       if (settings){$.extend(config, settings);}
 
-      // declaring plugin variables
-      var mTrigger;
-      var menu = $(this);
-      var active = config.activeClass;
-      var button = config.trigger;
-      var bpoint = config.breakpoint;
-      var submTrigger = config.submenuTrigger;
-      var submenu = config.submenu;
-      var submenuClass = '.' + submenu.prop('class');
-      var submenuActive = config.submenuActiveClass;
-      var canvasOn = config.moveCanvas;
-      var canvas = config.canvas;
-      var time = config.timeOut;
+      // variaveis utilizadas no plugin
+      var mTrigger,
+          menu = $(this),
+          active = config.activeClass,
+          button = config.trigger,
+          bpoint = config.breakpoint,
+          submTrigger = config.submenuTrigger,
+          submenu = config.submenu,
+          submenuActive = config.submenuActiveClass,
+          canvasOn = config.moveCanvas,
+          canvas = config.canvas,
+          time = config.timeOut;
+
+          // console.log(config);
 
     return this.each(function () {
+
       if($(window).width() > bpoint){
         mTrigger = false;
       } else {
@@ -83,8 +85,7 @@
       $(window).bind('resize',onChange);
       $(document).ready(onChange);
 
-      button.click(function(e){
-        e.preventDefault();
+      button.click(function(){
         if(mTrigger) {
           menu.toggleClass(active);
           button.toggleClass(active);
@@ -95,7 +96,11 @@
       });
 
       if(submenu){
-        // toggle for the submenus
+
+        var submenuClass = '.' + submenu.prop('class');
+        // console.log(submenuClass);
+
+        // toggle para os submenus
         submTrigger.click(function(){
 
           if(mTrigger) {
