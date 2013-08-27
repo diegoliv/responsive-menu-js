@@ -22,12 +22,54 @@
 
 <body>
 <a href="https://github.com/diegoliv/responsive-menu-js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-<div class="pure-g wrapper">
-	<div class="pure-u-1">
-		<h1>ResponsiveMenu.js</h1>
-		<h3 class="subtitle">A jQuery plugin that helps to build a responsive menu, dealing with classes toggling and leaving all the presentation stuff to css.</h3>
-	</div>
+<!-- The menu wrapper -->
+
+
+<a href="#" id="menu-toggle">Menu</a>
+
+<div id="menu">
+	<ul>
+		<li><a href="#">sample link</a></li>
+		<li><a href="#">sample link</a></li>
+		<li><a href="#">sample link</a>
+			<!-- The submenu toggle button -->
+			<a href="#" class="submenu-toggle">Open Submenu</a>
+			<!-- The submenu wrapper -->
+			<ul class="submenu">
+				<li><a href="#">sample link</a></li>
+				<li><a href="#">sample link</a></li>
+				<li><a href="#">sample link</a></li>
+			</ul>
+		</li>
+	</ul>
 </div>
 
+<div id="content" class="canvas">
+	<div class="pure-g wrapper">
+		<div class="pure-u-1">
+			<h1>ResponsiveMenu.js</h1>
+			<h3 class="subtitle">A jQuery plugin that helps to build a responsive menu, dealing with classes toggling and leaving all the presentation stuff to css.</h3>
+		</div>
+	</div>	
+</div>
+
+
+
+
+<script src="jquery.responsivemenu.0.1.js"></script>
+<script>
+	$(function(){
+		  $('#menu').responsiveMenu({
+		    trigger: $('#menu-toggle'),
+		    activeClass: 'active',
+		    submenuTrigger: $('.submenu-toggle'),
+		    submenu: $('.submenu'),
+		    submenuActiveClass: 'open',
+		    breakpoint: 720
+		    moveCanvas: true,
+		    canvas: $('.canvas'),
+		  });
+	});
+</script>
 </body>
 </html>
