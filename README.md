@@ -94,4 +94,5 @@ This projected is licensed under the terms of the MIT license (check LICENCE.txt
 To-do
 -----
 
-- [ ] add a `responsivemenu.less` file to help building the css markup for the menu 
+- add a `responsivemenu.less` file to help building the css markup for the menu 
+- add application examples to the master branch  
