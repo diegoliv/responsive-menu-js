@@ -76,3 +76,8 @@ Option                | Default Value    | Description
 `timeOut`             | `100`            | Time interval (in miliseconds), when the `onResize` function will be executed. The biggest the number, the bigger is the resourse economy, but the slower is the plugin response. 
 `moveCanvas`          | `false`          | Option to activate a class toggle on the wrapper of the entire page. Useful for using the **"off canvas"** menu pattern
 `canvas`              | `null`           | Selector of the wrapper or the elements that build the main site structure
+
+A note about this plugin
+------------------------
+
+This is my *first plugin* AND repo here at GitHub! So, there is a plus for me in this project: start learning using GitHub and participating on this awesome community. I am open to contributions, suggestions, improvements, critics, anything that you have to say about it. Feel free to fork, clone, change it!

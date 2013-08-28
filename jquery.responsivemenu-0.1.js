@@ -19,7 +19,7 @@
  - breakpoint: maximum width of the screen where the plugin will work. When the screen reach this size, it removes all the injected classes too. (default: 720)
  - timeOut: time interval in miliseconds, when the onResize function will be executed. The biggest the number, the bigger is the resourse economy, but the slower is the plugin response. (default: 100)
  - moveCanvas: option to activate a class toggle on the wrapper of the entire page. Useful for using the "off canvas" menu pattern (default: false)
- - canvas: class name of the wrapper or the elements that build the main site structure (default: null)
+ - canvas: selector of the wrapper or the elements that build the main site structure (default: null)
 */
 
 ;(function ( $, window, document, undefined ) {
