@@ -8,9 +8,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- pure.css for basic styling -->
-<link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.2.1/base-min.css&pure/0.2.1/grids-min.css&/pure/0.2.1/buttons-min.css">
+<link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.2.1/base-min.css&/pure/0.2.1/buttons-min.css&/pure/0.2.1/tables-min.css">
 <!-- google web fonts -->
 <link href='http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<!-- syntax highlighter -->
+<link rel="stylesheet" href="css/monokai.css">
+<!-- custom styling -->
 <link rel="stylesheet" href="style.css">
 
 <!--[if lt IE 9]>
@@ -21,43 +24,218 @@
 </head>
 
 <body>
-<a href="https://github.com/diegoliv/responsive-menu-js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/diegoliv/responsiveMenu.js"><img style="position: fixed; top: 0; right: 0; z-index: 999; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<header class="canvas">
+	<a href="#" id="menu-toggle" class="icon-list">Demo Menu</a>	
+</header>
 
 <!-- The menu wrapper -->
 <div id="menu">
 	<ul>
-		<li><a href="#">sample link</a></li>
-		<li><a href="#">sample link</a></li>
-		<li><a href="#">sample link</a>
+		<li><a href="#">Just a sample link</a></li>
+		<li><a href="#">Another sample link</a></li>
+		<li>
 			<!-- The submenu toggle button -->
-			<a href="#" class="submenu-toggle">Open Submenu</a>
+			<a href="#" class="submenu-toggle">One submenu</a>
 			<!-- The submenu wrapper -->
 			<ul class="submenu">
-				<li><a href="#">sample link</a></li>
-				<li><a href="#">sample link</a></li>
-				<li><a href="#">sample link</a></li>
+				<li><a href="#">Submenu sample link</a></li>
+				<li><a href="#">Another sample link</a></li>
+				<li><a href="#">Yet Another sample link</a></li>
 			</ul>
 		</li>
+		<li><a href="#">Just a sample link</a></li>
+		<li><a href="#">Another sample link</a></li>
+		<li>
+			<!-- The submenu toggle button -->
+			<a href="#" class="submenu-toggle">Another submenu</a>
+			<!-- The submenu wrapper -->
+			<ul class="submenu">
+				<li><a href="#">Submenu sample link</a></li>
+				<li><a href="#">Another sample link</a></li>
+				<li><a href="#">Yet Another sample link</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Sample link</a></li>
+		<li><a href="#">Sample link</a></li>
 	</ul>
 </div>
 
-<div id="content" class="canvas">
+<section id="content" class="canvas">
 
-<a href="#" id="menu-toggle">Menu</a>
-
-	<div class="pure-g wrapper">
-		<div class="pure-u-1">
+	<div class="wrapper">
+		<div id="hero">
+		<!-- <img src="svg/plugin-logo.svg" alt="" id="logo"> -->
+		<a id="logo" href="https://github.com/diegoliv/responsiveMenu.js" target="_blank" class="entypo">-</a>
 			<h1>ResponsiveMenu.js</h1>
 			<h3 class="subtitle">A jQuery plugin that helps to build a responsive menu, dealing with classes toggling and leaving all the presentation stuff to css.</h3>
+
+			<!-- GitHub buttons -->
+			<table id="github-buttons"><tr><td><iframe src="http://ghbtns.com/github-btn.html?user=diegoliv&repo=responsiveMenu.js&type=watch&count=true" height="30" width="118" frameborder="0" scrolling="0" style="width:118px; height: 30px;" allowTransparency="true"></iframe></td><td><iframe src="http://ghbtns.com/github-btn.html?user=diegoliv&repo=responsiveMenu.js&type=fork&count=true" height="30" width="118" frameborder="0" scrolling="0" style="width:118px; height: 30px;" allowTransparency="true"></iframe></td><td><iframe src="http://ghbtns.com/github-btn.html?user=diegoliv&type=follow&count=true" height="30" width="168" frameborder="0" scrolling="0" style="width:168px; height: 30px;" allowTransparency="true"></iframe></td></tr></table>
 		</div>
-	</div>	
-</div>
+	</div>
+</section>
 
+<section id="instructions" class="bg-primary canvas">
+	<div class="wrapper">
+		<h2 class="secondary">How to use</h2>
+		<p class="secondary">First, create a html structure similar to this:</p>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- <script src="js/jquery-1.10.2.min.js"></script> -->
+		<!-- html syntax -->
+<pre>
+<code class="html">
+	&lt;div id=&quot;content&quot; class=&quot;canvas&quot;&gt;
+
+	&lt;!-- (...)Here goes the content (...) --&gt;
+
+	&lt;/div&gt;
+
+	&lt;!-- A button to toggle our menu --&gt;
+	&lt;a href=&quot;#&quot; id=&quot;menu-toggle&quot;&gt;Menu&lt;/a&gt;
+
+	&lt;!-- The menu wrapper --&gt;
+	&lt;div id=&quot;menu&quot;&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href=&quot;#&quot;&gt;sample link&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#&quot;&gt;sample link&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#&quot;&gt;sample link&lt;/a&gt;
+				&lt;!-- The submenu toggle button --&gt;
+				&lt;a href=&quot;#&quot; class=&quot;submenu-toggle&quot;&gt;Open Submenu&lt;/a&gt;
+				&lt;!-- The submenu wrapper --&gt;
+				&lt;ul class=&quot;submenu&quot;&gt;
+					&lt;li&gt;&lt;a href=&quot;#&quot;&gt;sample link&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;#&quot;&gt;sample link&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;#&quot;&gt;sample link&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;	
+
+</code>
+</pre>
+
+<p class="secondary">Then, just call it via javascript:</p>
+<pre>
+<code class="javascript">
+	// Don't forget to include jQuery first
+	$(function(){
+		// initiate responsiveMenu
+		$('#menu').responsiveMenu($('#menu-toggle'));
+	});
+
+</code>
+</pre>
+
+<h2 class="secondary">Options</h2>
+<p class="secondary">The plugin has some options to cusomize. The full instance of the plugin would look like this:</p>
+<pre>
+<code class="javascript">
+	$('#menu').responsiveMenu({
+		trigger: $('#menu-toggle'),
+		activeClass: 'active',
+		submenuTrigger: $('.submenu-toggle'),
+		submenu: $('.submenu'),
+		submenuActiveClass: 'open',
+		breakpoint: 720
+		moveCanvas: true,
+		canvas: $('.canvas'),
+	});	
+
+</code>
+</pre>
+
+<p class="secondary">Here are the options to customize the plugin:</p>
+<table class="pure-table">
+    <thead>
+        <tr>
+            <th class="options">Option</th>
+            <th class="defaults">Default</th>
+            <th class="descr">Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="pure-table-odd">
+            <td><code>trigger</code></td>
+            <td><code>none</code></td>
+            <td>Selector for the button or element that will activate the default behavior of the plugin (required)</td>
+        </tr>
+
+        <tr>
+            <td><code>activeClass</code></td>
+            <td><code>.active</code></td>
+            <td>Class name that will be injected on the elements of the main menu when the toggle is activated</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td><code>submenuTrigger</code></td>
+            <td><code>$('sub-toggle')</code></td>
+            <td>Selector of the button(s) that activates the second level (if they exist) of the menu</td>
+        </tr>
+
+        <tr>
+            <td><code>submenu</code></td>
+            <td><code>$('.submenu')</code></td>
+            <td>Selector of the wrappers from the second level of the menu</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td><code>submenuActiveClass</code></td>
+            <td><code>.open</code></td>
+            <td>Class name that will be injected on wrappers of the second level of menus when they are activated</td>
+        </tr>
+
+        <tr>
+            <td><code>breakpoint</code></td>
+            <td><code>720</code></td>
+            <td>Maximum width of the screen where the plugin will work. When the screen reach this size, it removes all the injected classes too.</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td><code>timeOut</code></td>
+            <td><code>100</code></td>
+            <td>Time interval (in miliseconds), when the <code>onResize</code> function will be executed. The biggest the number, the bigger is the resourse economy, but the slower is the plugin response.</td> 
+        </tr>
+
+        <tr>
+            <td><code>moveCanvas</code></td>
+            <td><code>false</code></td>
+            <td>Option to activate a class toggle on the wrapper of the entire page. Useful for using the <strong>"off canvas"</strong> menu pattern</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td><code>canvas</code></td>
+            <td><code>null</code></td>
+            <td>Selector of the wrapper or the elements that build the main site structure</td>
+        </tr>
+    </tbody>
+</table>
+
+	</div>
+</section>
+
+<footer class="bg-dark canvas">
+	<div class="wrapper">
+		<div class="align-left">
+			<h5 class="secondary">This projected is licensed under the terms of the MIT license.</h5>
+		</div>
+		<div class="align-right">
+			<p><a href="http://github.com/diegoliv" target="_blank" class="icon-github">Follow me at GitHub</a></p>
+		</div>
+	</div>
+</footer>
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 <script src="js/jquery.responsivemenu-0.1.js"></script>
 <script>
+	// initiate highlight
+	hljs.tabReplace = '   '; // 4 spaces
+	hljs.initHighlightingOnLoad();
+
+	// initiate responsiveMenu
 	$(function(){
 		$('#menu').responsiveMenu({
 			trigger: $('#menu-toggle'),

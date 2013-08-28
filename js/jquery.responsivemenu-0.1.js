@@ -96,8 +96,8 @@
 
       if(submenu){
         // toggle for the submenus
-        submTrigger.click(function(){
-
+        submTrigger.click(function(e){
+          e.preventDefault();
           if(mTrigger) {
             
             if($(this).hasClass(active)){
