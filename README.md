@@ -81,3 +81,8 @@ A note about this plugin
 ------------------------
 
 This is my *first plugin* AND repo here at GitHub! So, there is a plus for me in this project: start learning using GitHub and participating on this awesome community. I am open to contributions, suggestions, improvements, critics, anything that you have to say about it. Feel free to fork, clone, change it!
+
+Licencing
+---------
+
+This projected is licensed under the terms of the MIT license (check LICENCE.txt for more information).
