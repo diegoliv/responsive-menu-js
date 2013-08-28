@@ -1,6 +1,7 @@
 // responsiveMenu.js =========================//
 // Responsive jQuery menu plugin              //
-// developed by Favolla Comunicação           //
+// developed by diegoliv @Favolla Comunicação //
+// site: http://favolla.com.br                //
 //============================================//
 
 /* INSTRUCTIONS
@@ -82,7 +83,8 @@
       $(window).bind('resize',onChange);
       $(document).ready(onChange);
 
-      button.click(function(){
+      button.click(function(e){
+        e.preventDefault();
         if(mTrigger) {
           menu.toggleClass(active);
           button.toggleClass(active);
@@ -94,7 +96,8 @@
 
       if(submenu){
         // toggle for the submenus
-        submTrigger.click(function(){
+        submTrigger.click(function(e){
+          e.preventDefault();
 
           if(mTrigger) {
             
