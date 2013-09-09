@@ -56,7 +56,7 @@ The plugin has some options to cusomize. The full instance of the plugin would l
     submenuTrigger: $('.submenu-toggle'),
     submenu: $('.submenu'),
     submenuActiveClass: 'open',
-    breakpoint: 720
+    breakpoint: 720,
     moveCanvas: true,
     canvas: $('.canvas'),
   });
