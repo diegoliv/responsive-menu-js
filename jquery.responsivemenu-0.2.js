@@ -25,128 +25,134 @@
 
 ;(function ( $, window, document, undefined ) {
 
-  "use strict";
+	"use strict";
 
-  var $window = $(window),
-    ResponsiveMenu = {
-    
-    init: function(options, elem) {
-      this.options = $.extend( {}, this.options, options );
-      this.elem = $(elem);
+	var $window = $(window),
+		ResponsiveMenu = {
+		
+		init: function(options, elem) {
+			this.options = $.extend( {}, this.options, options );
+			this.elem = $(elem);
 
-      if($window.width() > this.options.breakpoint){
-        this.options.mTrigger = false;
-      }
+			if($window.width() > this.options.breakpoint){
+				this.options.mTrigger = false;
+			}
 
-      this.bindEvents();
+			this.bindEvents();
 
-      return this;
-    },
+			return this;
+		},
 
-    options: {
-      trigger: null,
-      activeClass: 'active',
-      submenuTrigger: $('.sub-toggle'),
-      submenu: false,
-      submenuActiveClass: 'open',
-      breakpoint: 720,
-      timeOut: 100,
-      moveCanvas: false,
-      canvas: null,
-      mTrigger: true
-    },
+		options: {
+			trigger: null,
+			activeClass: 'active',
+			submenuTrigger: $('.sub-toggle'),
+			submenu: false,
+			submenuActiveClass: 'open',
+			breakpoint: 720,
+			timeOut: 100,
+			moveCanvas: false,
+			canvas: null,
+			mTrigger: true,
+			callback: null
+		},
 
-    bindEvents: function() {
-      var self = this;
+		bindEvents: function() {
+			var self = this;
 
-      this.options.trigger.on('click', function(evt) {
-        evt.preventDefault();
-        self.triggerMain(self);
-      });
+			this.options.trigger.on('click', function(evt) {
+				evt.preventDefault();
+				self.triggerMain(self);
+			});
 
-      if(this.options.submenu){
-        this.options.submenuTrigger.on("click", function(evt) {
-          evt.preventDefault();
-          self.triggerSubMenu(this, self);
-        });
-      }
+			if(this.options.submenu){
+				this.options.submenuTrigger.on("click", function(evt) {
+					evt.preventDefault();
+					self.triggerSubMenu(this, self);
+				});
+			}
 
-      $window.on('resize', function() {
-        if(this.resizeTO) clearTimeout(this.resizeTO);
-        
-        this.resizeTO = setTimeout(function() {
-          $(this).trigger('resizeEnd');
-        }, self.options.timeOut);
-      });
+			$window.on('resize', function() {
+				if(this.resizeTO) clearTimeout(this.resizeTO);
+				
+				this.resizeTO = setTimeout(function() {
+					$(this).trigger('resizeEnd');
+				}, self.options.timeOut);
+			});
 
-      $window.on('resizeEnd', this.onFinalResize(self));
-    },
+			$window.on('resizeEnd', this.onFinalResize(self));
+		},
 
-    triggerMain: function(self) {
-      var activeClass = self.options.activeClass;
+		triggerMain: function(self) {
+			var activeClass = self.options.activeClass;
 
-      if(self.options.mTrigger) {
-        self.elem.toggleClass(activeClass);
-        self.options.trigger.toggleClass(activeClass);
+			if(self.options.mTrigger) {
+				self.elem.toggleClass(activeClass);
+				self.options.trigger.toggleClass(activeClass);
 
-        if(self.options.moveCanvas){
-          self.options.canvas.toggleClass(activeClass);
-        }
-      }
-    },
+				if(self.options.moveCanvas){
+					self.options.canvas.toggleClass(activeClass);
+				}
+			}
+		},
 
-    triggerSubMenu: function(elem, self) {
-      var $elem = $(elem),
-        activeClass = self.options.activeClass,
-        subActiveClass = self.options.submenuActiveClass,
-        submenu = self.options.submenu;
+		triggerSubMenu: function(elem, self) {
+			var $elem = $(elem),
+				activeClass = self.options.activeClass,
+				subActiveClass = self.options.submenuActiveClass,
+				submenu = self.options.submenu;
 
-      if(self.options.mTrigger) {
-        if($elem.hasClass(activeClass)) {
-          $elem.removeClass(activeClass);
-          submenu.removeClass(subActiveClass);
-        } else {
-          $elem.removeClass(activeClass);
-          $elem.addClass(activeClass);
-          submenu.removeClass(subActiveClass);
-          $elem.next('.' + submenu.prop('class')).addClass(subActiveClass);
-        }
-      }
-    },
+			if(self.options.mTrigger) {
+				if($elem.hasClass(activeClass)) {
+					$elem.removeClass(activeClass);
+					submenu.removeClass(subActiveClass);
+				} else {
+					$elem.removeClass(activeClass);
+					$elem.addClass(activeClass);
+					submenu.removeClass(subActiveClass);
+					$elem.next('.' + submenu.prop('class')).addClass(subActiveClass);
+				}
+			}
+		},
 
-    onFinalResize: function(self) {
-      if($window.width() > self.options.breakpoint){
+		onFinalResize: function(self) {
+			if($window.width() > self.options.breakpoint){
 
-        var activeClass = self.options.activeClass;
-        
-        self.options.mTrigger = false;
-        self.elem.removeClass(activeClass);
-        self.options.trigger.removeClass(activeClass);
-        
-        if(self.options.moveCanvas) {
-          self.options.canvas.removeClass(activeClass);
-        }
-      } else {
-        self.options.mTrigger = true;
-      }
-    }
-  } //ResponsiveMenu
+				var activeClass = self.options.activeClass;
+				
+				self.options.mTrigger = false;
+				self.elem.removeClass(activeClass);
+				self.options.trigger.removeClass(activeClass);
+				
+				if(self.options.moveCanvas) {
+					self.options.canvas.removeClass(activeClass);
+				}
 
-  if ( typeof Object.create !== 'function' ) {
-    Object.create = function (o) {
-      function F() {}
-      F.prototype = o;
-      return new F();
-    };
-  }
+				if (typeof self.options.callback == 'function') {
+					self.options.callback.call(this);
+				}
+				
+			} else {
+				self.options.mTrigger = true;
+			}
+		}
+	} //ResponsiveMenu
 
-  $.fn.responsiveMenu = function( options ) {
-    if (this.length) {
-      return this.each(function() {
-        var myMenu = Object.create(ResponsiveMenu);
-        myMenu.init(options, this);
-        $.data(this, 'responsiveMenu', myMenu);
-      });
-    }
-  };
+	if ( typeof Object.create !== 'function' ) {
+		Object.create = function (o) {
+			function F() {}
+			F.prototype = o;
+			return new F();
+		};
+	}
+
+	$.fn.responsiveMenu = function( options ) {
+		if (this.length) {
+			return this.each(function() {
+				var myMenu = Object.create(ResponsiveMenu);
+				myMenu.init(options, this);
+				$.data(this, 'responsiveMenu', myMenu);
+			});
+		}
+	};
 })( jQuery, window, document );
