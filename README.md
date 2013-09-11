@@ -82,9 +82,20 @@ A note about this plugin
 
 This is my *first plugin* AND repo here at GitHub! So, there is a plus for me in this project: start learning using GitHub and participating on this awesome community. I am open to contributions, suggestions, improvements, critics, anything that you have to say about it. Feel free to fork, clone, change it!
 
+Changelog
+---------
+
+####0.2 - props to [@jonnysooter](https://github.com/jonnysooter)
+- refactory of the plugin, using a more object oriented approach;
+- now the plugin holds all the functions inside an object, making easier to extend and debug;
+- added a callback function; 
+
+####0.1
+- initial state of plugin
+
 Still on Beta
 -------------
-This plugin is currently on it **initial and beta version (0.1)** There is much development yet to do. So, keep your eyes on it for further development, bug fixes and improvements.
+This plugin is currently on its **beta version (0.2)** There is much development yet to do. So, keep your eyes on it for further development, bug fixes and improvements.
 
 Licencing
 ---------
